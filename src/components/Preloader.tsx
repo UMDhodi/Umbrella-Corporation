@@ -118,8 +118,13 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
           <ambientLight intensity={0.2} />
           <directionalLight position={[10, 10, 5]} intensity={0.5} color="#ffffff" />
           <spotLight position={[-10, 5, 10]} angle={0.3} penumbra={1} intensity={3} color="#ff1a1a" />
-          <Suspense fallback={null}>
-            <Bounds fit clip observe margin={0.8}>
+          <Suspense fallback={
+            <mesh>
+              <ringGeometry args={[0.5, 0.6, 32]} />
+              <meshBasicMaterial color="#d2002a" transparent opacity={0.5} side={THREE.DoubleSide} />
+            </mesh>
+          }>
+            <Bounds fit observe margin={0.8}>
               <Float speed={1.5} rotationIntensity={0} floatIntensity={0.5}>
                 <RotatingLogo />
               </Float>

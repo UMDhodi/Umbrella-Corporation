@@ -12,17 +12,21 @@ export default function CustomLogo(props: any) {
     
     const applyGlass = (mat: THREE.Material) => {
       const originalMat = mat as THREE.MeshStandardMaterial;
+      const color = originalMat.color || new THREE.Color(0xffffff);
+      
+      // Determine if it's the red or white part based on basic color analysis
+      const isRed = color.r > 0.5 && color.g < 0.2 && color.b < 0.2;
+
       return new THREE.MeshPhysicalMaterial({
-        color: originalMat.color || 0xffffff,
-        map: originalMat.map || null,
-        vertexColors: originalMat.vertexColors || false,
-        metalness: 0.3,
-        roughness: 0.1,
-        transmission: 0.9,
+        color: color,
+        metalness: 0.5,
+        roughness: 0.2,
+        transmission: 0.6, // Slightly less transparent to ensure visibility
+        thickness: 1.5,
         ior: 1.5,
-        thickness: 2,
         transparent: true,
-        envMapIntensity: 2,
+        opacity: 0.9,     // Ensure it's visible even without an environment map
+        envMapIntensity: 1.5,
       });
     };
 

@@ -87,7 +87,12 @@ export default function UmbrellaScreensaver() {
           <ambientLight intensity={0.15} />
           <directionalLight position={[10, 10, 5]} intensity={0.4} color="#ffffff" />
           <spotLight position={[-8, 4, 8]} angle={0.3} penumbra={1} intensity={4} color="#ff1a1a" />
-          <Suspense fallback={null}>
+          <Suspense fallback={
+            <mesh>
+              <ringGeometry args={[0.5, 0.6, 32]} />
+              <meshBasicMaterial color="#d2002a" transparent opacity={0.3} side={THREE.DoubleSide} />
+            </mesh>
+          }>
             <Bounds fit observe margin={1.2}>
               <Float speed={1.2} rotationIntensity={0} floatIntensity={0.3}>
                 <RotatingLogoSS />
