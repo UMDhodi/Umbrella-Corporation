@@ -1,4 +1,4 @@
-import React from 'react';
+import NextImage from 'next/image';
 
 export default function StitchLayout() {
   return (
@@ -9,10 +9,22 @@ export default function StitchLayout() {
 {/* Hero Section */}
 <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-surface-container-lowest">
 <div className="absolute inset-0 opacity-20 grayscale">
-<img alt="Brutalist Architecture Interior" className="w-full h-full object-cover" data-alt="Monochrome brutalist laboratory hallway with harsh lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyIl9CLPcj_MVQUKh_kBDTnfA4MEJyVPCRpVfIGgCvfbN1CaGx2Qk7MAyjyt272ObYboRMZEOOg-y1AwDx_4PQOOE0XXm2O0TH2rx-9xzpJr4xiBNmzm_97lBdANP5f_4QGJyBpSTKVgz1JOtnFt3DEsnGFExEtlj47E5hfepTiB52QUgx4GIHXzJuXZnVZ-ipVJCL2fexK4mY_riYS3O87TvHQMjKLyhKV__LFp9I5C0Ox4EfCFGGhJ5lx7c6gO7KIdIjm2acI3E"/>
+<NextImage 
+  alt="Brutalist Architecture Interior" 
+  className="w-full h-full object-cover" 
+  src="/images/brutalist-architecture.jpg"
+  fill
+  priority
+/>
 </div>
 <div className="relative z-10 flex flex-col items-center text-center px-4">
-<img alt="Umbrella Corporation Logo" className="w-32 md:w-40 lg:w-48 mb-6 drop-shadow-lg opacity-90" src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Umbrella_Corporation_logo.svg" />
+<NextImage 
+  alt="Umbrella Corporation Logo" 
+  className="w-32 md:w-40 lg:w-48 mb-6 drop-shadow-lg opacity-90 h-auto" 
+  src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Umbrella_Corporation_logo.svg" 
+  width={192}
+  height={192}
+/>
 <h1 className="font-headline text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter text-on-surface mb-6 uppercase leading-[0.9]">
                     PRESERVING THE HEALTH <br/> <span className="text-primary-container">OF THE PEOPLE.</span>
 </h1>
@@ -66,7 +78,12 @@ export default function StitchLayout() {
 {/* Pharmaceuticals */}
 <div className="relative group overflow-hidden border-r border-outline-variant/10 bg-surface h-full">
 <div className="absolute inset-0 opacity-10 group-hover:opacity-30 transition-opacity duration-500">
-<img alt="Lab Tech" className="w-full h-full object-cover grayscale" data-alt="Close up of chemical laboratory vials in monochrome" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCu9P9Vvoa1yMEnlGGpfE64yYPx6HTHyM9PS7nPt27P5Ifv5x7WcZa_JjCT85ZXTewp2WWh8a1nJ8BdvRDx2eWzUySgF36n0S7uCeaRhegQd95t-A0voG-pbiOkh5dh26gzyFQG0dHeW-o3KbozXeiQu7HMR4NZQpGKc47b-fHv1_4TkIIhLqQQ-1TC7t3a2GXrTQztTv_R4SzYalegG8OHIMlBclk3Q2RUP9mNu6V15SW3f0EBDfjBbg2ypoVo1ugShCipM-AxzYE"/>
+<NextImage 
+  alt="Lab Tech" 
+  className="w-full h-full object-cover grayscale" 
+  src="/images/lab-tech.jpg"
+  fill
+/>
 </div>
 <div className="relative p-12 flex flex-col h-full justify-between z-10">
 <div>
@@ -82,7 +99,12 @@ export default function StitchLayout() {
 {/* Cosmetics */}
 <div className="relative group overflow-hidden border-r border-outline-variant/10 bg-surface-container h-full">
 <div className="absolute inset-0 opacity-10 group-hover:opacity-30 transition-opacity duration-500">
-<img alt="Cosmetic manufacturing" className="w-full h-full object-cover grayscale" data-alt="Minimalist cosmetic product production line" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK3HsR3NEZf5Mep8BQj0mzVbgV1zbJ0OabCkB7EBd6-LsnCNdTH57zW45VY0Rxy6wreLdL4Ws0osZRwTpxWJk4LumAoyxgKcf1UyH_TOSx9V3sOnKO76CBvJkA_CmWK2ljGTE3HFbixpRVpk6cXelxSwZ53WsPafhme-NeYb5wQaF60_vy4gemDA5YgOOmGRyG4FdHWmCLrFRXy15fMZjhcQc7D9ypmn_kmI4dbmH0CdMVaUWytbkhQxli43vKKDk7vUyPxp2GSHM"/>
+<NextImage 
+  alt="Cosmetic manufacturing" 
+  className="w-full h-full object-cover grayscale" 
+  src="/images/security-surveillance.jpg"
+  fill
+/>
 </div>
 <div className="relative p-12 flex flex-col h-full justify-between z-10">
 <div>
@@ -98,7 +120,12 @@ export default function StitchLayout() {
 {/* Chemicals */}
 <div className="relative group overflow-hidden border-r border-outline-variant/10 bg-surface h-full">
 <div className="absolute inset-0 opacity-10 group-hover:opacity-30 transition-opacity duration-500">
-<img alt="Industrial machinery" className="w-full h-full object-cover grayscale" data-alt="Heavy industrial machinery gears and steel" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0RthnbMN_ZJw466MJloNt8cZqOSy2m3bb0qVWEIayfUCHRqCJa2_UVQsvDrnVJOyVEY9QR8-ADVKSWnVWO3w4wPR43FQ7DhLhWx5ZtDbgCPllaZGxQCjoGu_t7IVxuLn2WJ9nMWhqsEfkPrj3ULNkZJQNS1nljXfIVlmm5hhZfUagsMitUWJHU_k9TmfMjOOItOS2o-6SoxecqzSyWK4Lbu_3HhX_U1PtTiKN1s_8aLj72ycfkdoShK0sU9HZj0gER3YnnPHoLc4"/>
+<NextImage 
+  alt="Industrial machinery" 
+  className="w-full h-full object-cover grayscale" 
+  src="/images/pharmaceutical-logistics.jpg"
+  fill
+/>
 </div>
 <div className="relative p-12 flex flex-col h-full justify-between z-10">
 <div>
@@ -114,7 +141,12 @@ export default function StitchLayout() {
 {/* Transportation */}
 <div className="relative group overflow-hidden bg-surface-container h-full">
 <div className="absolute inset-0 opacity-10 group-hover:opacity-30 transition-opacity duration-500">
-<img alt="Cargo logistics" className="w-full h-full object-cover grayscale" data-alt="Cargo ships at a shipping yard at dusk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcfy7b65uuiGalTPuETiDVmJw-bHarl7uz2Uzn16xSfV2X8TItJbgGlI0S4mgAidYEor3qOF1c_UMX5Y5w1PQME_41TMqq6aTiRNgP_dI4V7koejIupIWpGXD7TQa7jZvTSMcagOte79pt5yJCG3pjDZ_mzU-rd6Evfbzh_LswzFlnJjOTA4ArGhIpye5Zm7BhejLzKkNVii26yyf7p2UnQbBCd8Oe4tdBr-Lv8Ga58yHj7fC2kHr9pWjhS6Abf6X2I3CXz67Tqxg"/>
+<NextImage 
+  alt="Cargo logistics" 
+  className="w-full h-full object-cover grayscale" 
+  src="/images/corporate-office.jpg"
+  fill
+/>
 </div>
 <div className="relative p-12 flex flex-col h-full justify-between z-10">
 <div>
@@ -150,7 +182,12 @@ export default function StitchLayout() {
 </div>
 </div>
 <div className="relative bg-black">
-<img alt="Clinical Environment" className="w-full h-full object-cover opacity-50 grayscale" data-alt="Top down view of a sterile white clinical room floor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGJ21W_hvmwREMBCkRH3Pt7C5YMM-RlriEceMrQtRomSw2nPaM4aTzfWYSbgudSuEHWi_EzscAu9py5ZcQGN3KeqhpFqA5ARrpJZa2J0u2NdlCOg2qpDuvIggu5czjMjOsQ34fuq9v4W9V9KM_pN4I5fdBcQ-UIWrJ3EWUkWp5vQyoqmDXEA1RtZwhWB1ljBKzMmQNBo2cFWktj-x8glJhVCGeiTCPBBtl36D7O0p5lF4UhbYK714J5y0WtL_UkR18dxY2vBzhhLM"/>
+<NextImage 
+  alt="Clinical Environment" 
+  className="w-full h-full object-cover opacity-50 grayscale" 
+  src="/images/clinical-environment.jpg"
+  fill
+/>
 <div className="absolute inset-0 flex items-center justify-center p-12">
 <div className="glass-overlay p-12 border border-white/5 w-full max-w-md">
 <h5 className="font-headline text-xs font-bold tracking-widest uppercase mb-4 text-primary">Status: Operational</h5>

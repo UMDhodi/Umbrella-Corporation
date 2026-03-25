@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import NextImage from 'next/image';
 
 export default function PhotoAssetsPage() {
   return (
@@ -12,7 +13,7 @@ export default function PhotoAssetsPage() {
               <span className="material-symbols-outlined text-[1rem]">arrow_back</span>
               Back to Press
             </Link>
-          
+
             <div className="flex items-center gap-4 mb-8">
               <span className="text-2xl font-black tracking-tighter text-red-700 dark:text-red-600 font-headline uppercase">UMBRELLA CORP</span>
               <div className="h-[1px] flex-1 bg-zinc-800/50"></div>
@@ -37,15 +38,15 @@ export default function PhotoAssetsPage() {
                 </ul>
               </div>
               <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8 p-12 bg-surface">
-                <div className="group relative aspect-square overflow-hidden bg-surface-container-high border border-zinc-800/50">
-                  <img className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH3QzyToeM7NbN8qnMQPmyAavF5LHcYcjPRMWvpzv52bOOpQ2mXyvvzOpW9HlS5uLvyTmf2Cz97YPidYQZlDOZXySL8QKGtnMuNzhrW8Pi1dULrez1-CPOC1LxCGqSwwfHr4PKoUnnQu5fmJXTb2shkmxqksvVdcBdbPZeigaUtoHbeozGJ5TU_1Dgyada4_WmX4Vojqd6zYlmzsHlnfhgHwiguwzj6hdthwhlm5CxKIgq8W-55uA6v2sfe4vOc7raWxS4J1JXEOM"/>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-6 flex flex-col justify-end">
+                <div className="relative aspect-square bg-surface-container overflow-hidden group">
+                  <NextImage src="/images/facility-1.png" fill className="object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" alt="Facility 1" />
+                  <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                     <span className="font-headline font-bold text-xs uppercase tracking-widest">Unit-72 Packaging</span>
                   </div>
                 </div>
-                <div className="group relative aspect-[3/4] overflow-hidden bg-surface-container-high border border-zinc-800/50 md:translate-y-12">
-                  <img className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-SVSfzQ4XEKBlHaclzMyixJd5UDl4oOCIWcQRG551sj0YdNQJRTplSid1nxNrYzQyz7v7l9rKHv_6EXPbxxnQNNvoyDuy4PN_ilJjUs03hd_wuMsfjVS-Ay1WNeSR1J40lDHM3hlf27mWVsmS15NEF_HJGDH8Jc0yt-wylrjRn3Ik6jxMw625-6wBbZBMRkf2DP5GFym18bw01nlA8eV8LsBm9JQnYagtdWS6GauDMM7ijbtoBtz5KPwJJBltltHqScHG_QZIIZs"/>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-6 flex flex-col justify-end">
+                <div className="relative aspect-square bg-surface-container overflow-hidden group md:translate-y-12">
+                  <NextImage src="/images/facility-2.jpg" fill className="object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" alt="Facility 2" />
+                  <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                     <span className="font-headline font-bold text-xs uppercase tracking-widest">Raccoon City HQ</span>
                   </div>
                 </div>
@@ -57,7 +58,7 @@ export default function PhotoAssetsPage() {
           <section className="mb-32">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 border-t border-zinc-800/30 bg-surface-container-low">
               <div className="lg:col-span-8 p-8 md:p-12 relative overflow-hidden h-[600px]">
-                <img className="absolute inset-0 w-full h-full object-cover grayscale brightness-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzI4xqUxTXwNSPW7OfV5-hznkwxfZadR5LFsgWkmwCAMXamEDtPQTo1oCDftjNBl9lCVJdYD7sbydEhA1IrCz0cNvy5PYW06TYpQXEIGaLYG9G3u8UygGRXhzURSHhmVrR60A9d1QIUh8v2F3u1FHscTXZ-Bo8JkR1VMZ9J1ftpksf7Cm55QQLb72eDg42iP9b-1RQbacwp8MOosOsqqLb7NKnQLVXOnMV-3p_SbVHQr25sypu0LCRpvCmzbgovlaoUuXo0XkNOWI"/>
+                <NextImage className="absolute inset-0 w-full h-full object-cover grayscale brightness-50" src="/images/facility-3.jpg" fill alt="Facility 3" />
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/20 to-transparent"></div>
                 <div className="relative z-10 h-full flex flex-col justify-center max-w-md">
                   <span className="font-headline text-xs font-bold uppercase tracking-[0.3em] text-primary-container mb-4">Archive: 02-TACTICAL</span>
@@ -114,7 +115,7 @@ export default function PhotoAssetsPage() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 h-[500px]">
               <div className="md:col-span-2 relative overflow-hidden border border-zinc-800 group">
-                <img className="absolute inset-0 w-full h-full object-cover brightness-50 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvmhC0h3Gf9sXn0tqSo-VHixn2cSmZVQsj_6soUuEvTc8QV_mQVZrM6w1k9kmy-bCiM2T3szA5GU5tZcCCgb1x_8hffSx0Tr0uYmzfGgNgHL6Pa9pFBngXhxdHAsDMJZq62wxbD5n_sTslyWurQJjKhsyjp7jFJPQ8zw5u4P2NGHdqJqlblBZgRAOFIWrcOsxwlj8yrsZAq-MiNxWA1v8LlTRWj7QlJd5V7xcA8UTe7OcTevegVgOy4ACTYj1Zeh07xisDhC8qYvU"/>
+                <NextImage className="absolute inset-0 w-full h-full object-cover brightness-50 group-hover:scale-105 transition-transform duration-700" src="/images/facility-4.jpg" fill alt="Facility 4" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-8 flex flex-col justify-end">
                   <h3 className="font-headline text-2xl font-bold uppercase mb-2">The Hive Complex</h3>
                   <p className="text-[10px] text-zinc-400 uppercase tracking-widest max-w-xs">Primary underground research facility. Biological experimentation zone.</p>
@@ -122,12 +123,12 @@ export default function PhotoAssetsPage() {
               </div>
               <div className="bg-surface-container-high p-8 flex flex-col border border-zinc-800/50">
                 <span className="material-symbols-outlined text-primary-container text-4xl mb-6">biotech</span>
-                <h3 className="font-headline text-lg font-bold uppercase mb-4">T-Virus Assets</h3>
+                <h3 className="font-headline text-lg font-bold uppercase mb-4">Research Facilities</h3>
                 <div className="flex-1 border-l border-zinc-700/50 pl-4 py-2">
                   <p className="text-[10px] text-zinc-500 uppercase leading-loose">
-                    // Double Helix Vials<br/>
-                    // Stabilization Agents<br/>
-                    // Neural Mutation Logs<br/>
+                    // Double Helix Vials<br />
+                    // Stabilization Agents<br />
+                    // Neural Mutation Logs<br />
                     // Antigen Protocols
                   </p>
                 </div>

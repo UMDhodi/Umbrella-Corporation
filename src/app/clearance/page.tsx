@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import NextImage from 'next/image';
 import RotatingGLBBackground from '@/components/RotatingGLBBackground';
 
 type Phase = 'login' | 'scanning' | 'denied' | 'granted';
@@ -19,23 +20,41 @@ export default function ClearancePage() {
   const [showPass, setShowPass] = useState(false);
   const [audioPlaying, setAudioPlaying] = useState(false);
 
-  // Fixed session ID (generated once on mount to avoid re-render randomness)
+  // Fixed session ID
   const sessionId = useRef('UM-' + Math.random().toString(36).substring(2, 8).toUpperCase());
+  
+  // Preload audio
+  const grantedAudio = useRef<HTMLAudioElement | null>(null);
+  const deniedAudio = useRef<HTMLAudioElement | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  // Play audio and track when it finishes
+  useEffect(() => {
+    grantedAudio.current = new Audio('/audio/granted.mp3');
+    deniedAudio.current = new Audio('/audio/denied.mp3');
+    grantedAudio.current.load();
+    deniedAudio.current.load();
+  }, []);
+
   function playAudio(src: string) {
     if (audioRef.current) {
       audioRef.current.pause();
+      audioRef.current.currentTime = 0;
     }
-    const audio = new Audio(src);
+    
+    const audio = src.includes('granted') ? grantedAudio.current : deniedAudio.current;
+    if (!audio) return;
+
     audioRef.current = audio;
     setAudioPlaying(true);
     audio.play().catch(() => {});
-    audio.addEventListener('ended', () => setAudioPlaying(false));
+    
+    const onEnded = () => {
+      setAudioPlaying(false);
+      audio.removeEventListener('ended', onEnded);
+    };
+    audio.addEventListener('ended', onEnded);
   }
 
-  // Countdown timer for denied phase
   useEffect(() => {
     if (phase !== 'denied') return;
     setCountdown(30);
@@ -45,14 +64,12 @@ export default function ClearancePage() {
     return () => clearInterval(interval);
   }, [phase]);
 
-  // Auto-redirect when countdown hits 0
   useEffect(() => {
     if (phase === 'denied' && countdown === 0) {
       router.push('/');
     }
   }, [phase, countdown, router]);
 
-  // Cleanup audio on unmount
   useEffect(() => {
     return () => {
       audioRef.current?.pause();
@@ -77,7 +94,6 @@ export default function ClearancePage() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] flex flex-col items-center justify-center relative overflow-hidden">
-
       {/* Scanline overlay */}
       <div
         className="pointer-events-none absolute inset-0 z-0"
@@ -96,13 +112,15 @@ export default function ClearancePage() {
       {/* ─── LOGIN PHASE ─── */}
       {(phase === 'login' || phase === 'scanning') && (
         <div className="relative z-10 w-full max-w-md px-8">
-          {/* Logo */}
           <div className="flex flex-col items-center mb-10">
-            <img
+            <NextImage
               src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Umbrella_Corporation_logo.svg"
               alt="Umbrella Corporation"
-              className="w-20 h-20 mb-6 opacity-90"
+              width={80}
+              height={80}
+              className="mb-6 opacity-90 h-20 w-auto"
               style={{ filter: 'drop-shadow(0 0 12px rgba(210,0,42,0.6))' }}
+              priority
             />
             <h1 className="font-headline text-3xl font-black tracking-tight uppercase text-white text-center">
               UMBRELLA CORP
@@ -128,11 +146,8 @@ export default function ClearancePage() {
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="ENTER OPERATIVE ID"
                 autoComplete="off"
-                autoCorrect="off"
-                autoCapitalize="off"
-                spellCheck={false}
                 disabled={phase === 'scanning'}
-                className="w-full bg-[#131313] border border-surface-container-high px-4 py-3 font-mono text-sm text-on-surface placeholder-on-surface/20 focus:outline-none focus:border-[#d2002a] transition-colors uppercase tracking-widest disabled:opacity-40"
+                className="w-full bg-[#131313] border border-surface-container-high px-4 py-3 font-mono text-sm text-on-surface focus:outline-none focus:border-[#d2002a] transition-colors uppercase tracking-widest disabled:opacity-40"
               />
             </div>
 
@@ -146,10 +161,8 @@ export default function ClearancePage() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="ENTER PASSPHRASE"
                 autoComplete="new-password"
-                data-lpignore="true"
-                data-form-type="other"
                 disabled={phase === 'scanning'}
-                className="w-full bg-[#131313] border border-surface-container-high px-4 py-3 pr-12 font-mono text-sm text-on-surface placeholder-on-surface/20 focus:outline-none focus:border-[#d2002a] transition-colors tracking-widest disabled:opacity-40"
+                className="w-full bg-[#131313] border border-surface-container-high px-4 py-3 pr-12 font-mono text-sm text-on-surface focus:outline-none focus:border-[#d2002a] transition-colors tracking-widest disabled:opacity-40"
               />
               <button
                 type="button"
@@ -165,7 +178,7 @@ export default function ClearancePage() {
             <button
               type="submit"
               disabled={phase === 'scanning' || !username || !password}
-              className="w-full mt-6 py-4 bg-[#d2002a] text-white font-headline font-black uppercase tracking-[0.3em] text-sm hover:bg-[#ff0030] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-150 flex items-center justify-center gap-3"
+              className="w-full mt-6 py-4 bg-[#d2002a] text-white font-headline font-black uppercase tracking-[0.3em] text-sm hover:bg-[#ff0030] disabled:opacity-50 transition-all duration-150 flex items-center justify-center gap-3"
             >
               {phase === 'scanning' ? (
                 <>
@@ -188,8 +201,6 @@ export default function ClearancePage() {
       {phase === 'denied' && (
         <div className="relative z-10 w-full max-w-lg px-8 text-center">
           <div className="border border-[#d2002a]/60 bg-[#d2002a]/5 p-12">
-
-            {/* Shield icon — shown for full audio duration */}
             <div className="flex justify-center mb-6">
               <span
                 className="material-symbols-outlined text-8xl text-[#d2002a]"
@@ -209,7 +220,6 @@ export default function ClearancePage() {
               Invalid credentials — Incident logged by Red Queen AI
             </p>
 
-            {/* Countdown */}
             <div className="mb-8">
               <div className="font-mono text-6xl font-black text-[#d2002a] tabular-nums">
                 {String(countdown).padStart(2, '0')}
@@ -241,7 +251,7 @@ export default function ClearancePage() {
               </button>
               <Link
                 href="/"
-                className="px-6 py-3 bg-surface-container font-headline font-bold uppercase tracking-widest text-xs text-on-surface/60 hover:text-white border border-surface-container-high hover:border-[#d2002a] transition-all duration-150 flex items-center gap-2"
+                className="px-6 py-3 bg-surface-container font-headline font-bold uppercase tracking-widest text-xs text-on-surface/60 hover:text-white border border-surface-container-high transition-all duration-150 flex items-center gap-2"
               >
                 <span className="material-symbols-outlined text-sm">home</span>
                 HOME
@@ -253,62 +263,55 @@ export default function ClearancePage() {
 
       {/* ─── ACCESS GRANTED PHASE ─── */}
       {phase === 'granted' && (
-        <>
+        <React.Fragment>
           <RotatingGLBBackground />
           <div className="relative z-10 w-full max-w-lg px-8 text-center">
             <div className="border border-green-700/60 bg-green-900/10 p-12 backdrop-blur-sm">
+              <div className="flex justify-center mb-6">
+                <span
+                  className="material-symbols-outlined text-8xl text-green-400"
+                  style={{
+                    fontVariationSettings: "'FILL' 1",
+                    animation: audioPlaying ? 'pulse 1.2s infinite' : 'none',
+                  }}
+                >
+                  verified_user
+                </span>
+              </div>
 
-            {/* Shield icon — shown for full audio duration */}
-            <div className="flex justify-center mb-6">
-              <span
-                className="material-symbols-outlined text-8xl text-green-400"
-                style={{
-                  fontVariationSettings: "'FILL' 1",
-                  animation: audioPlaying ? 'pulse 1.2s infinite' : 'none',
-                }}
+              <h2 className="font-headline text-4xl font-black tracking-tighter uppercase text-green-400 mb-2">
+                ACCESS GRANTED
+              </h2>
+              <p className="font-headline text-xs tracking-[0.3em] uppercase text-green-400/60 mb-8">
+                Welcome, Operative {username.toUpperCase()} — Level 4 Clearance Confirmed
+              </p>
+
+              <div className="bg-[#131313] border border-green-700/30 p-6 mb-8 text-left space-y-3">
+                <div className="flex justify-between font-headline text-[10px] uppercase tracking-widest">
+                  <span className="text-on-surface/40">Clearance Level</span>
+                  <span className="text-green-400">ALPHA-WHITE</span>
+                </div>
+                <div className="flex justify-between font-headline text-[10px] uppercase tracking-widest">
+                  <span className="text-on-surface/40">Session ID</span>
+                  <span className="text-on-surface/70 font-mono">{sessionId.current}</span>
+                </div>
+                <div className="flex justify-between font-headline text-[10px] uppercase tracking-widest">
+                  <span className="text-on-surface/40">Status</span>
+                  <span className="text-green-400">AUTHENTICATED</span>
+                </div>
+              </div>
+
+              <Link
+                href="/clearance/global-sectors"
+                className="inline-flex items-center gap-2 px-8 py-3 bg-green-700 text-white font-headline font-bold uppercase tracking-widest text-xs hover:bg-green-600 transition-all duration-150"
               >
-                verified_user
-              </span>
+                <span className="material-symbols-outlined text-sm">shield</span>
+                ENTER DASHBOARD
+              </Link>
             </div>
-
-            <h2 className="font-headline text-4xl font-black tracking-tighter uppercase text-green-400 mb-2">
-              ACCESS GRANTED
-            </h2>
-            <p className="font-headline text-xs tracking-[0.3em] uppercase text-green-400/60 mb-8">
-              Welcome, Operative {username.toUpperCase()} — Level 4 Clearance Confirmed
-            </p>
-
-            <div className="bg-[#131313] border border-green-700/30 p-6 mb-8 text-left space-y-3">
-              <div className="flex justify-between font-headline text-[10px] uppercase tracking-widest">
-                <span className="text-on-surface/40">Clearance Level</span>
-                <span className="text-green-400">ALPHA-WHITE</span>
-              </div>
-              <div className="flex justify-between font-headline text-[10px] uppercase tracking-widest">
-                <span className="text-on-surface/40">Session ID</span>
-                <span className="text-on-surface/70 font-mono">{sessionId.current}</span>
-              </div>
-              <div className="flex justify-between font-headline text-[10px] uppercase tracking-widest">
-                <span className="text-on-surface/40">Status</span>
-                <span className="text-green-400">AUTHENTICATED</span>
-              </div>
-            </div>
-
-            <p className="font-headline text-xs tracking-[0.2em] uppercase text-on-surface/40 mb-8">
-              Red Queen AI — All activity monitored. Proceed with discretion.
-            </p>
-
-            <Link
-              href="/clearance/global-sectors"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-green-700 text-white font-headline font-bold uppercase tracking-widest text-xs hover:bg-green-600 transition-all duration-150"
-            >
-              <span className="material-symbols-outlined text-sm">shield</span>
-              ENTER DASHBOARD
-            </Link>
           </div>
-        </div>
-        </>
+        </React.Fragment>
       )}
-
     </div>
   );
 }

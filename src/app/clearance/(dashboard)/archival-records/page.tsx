@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import NextImage from 'next/image';
 
 export default function ArchivalRecords() {
   return (
@@ -10,7 +11,14 @@ export default function ArchivalRecords() {
 <div className="flex-1 overflow-hidden">
 {/*  Hero Section  */}
 <section className="relative w-full h-[716px] flex items-end overflow-hidden">
-<img alt="Industrial pharmaceutical manufacturing line with sterile equipment" className="absolute inset-0 w-full h-full object-cover grayscale brightness-50 contrast-125" data-alt="Monochrome pharmaceutical production line in a high-tech facility" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOVbrDKKfFc1TMzRXoBBwx0kcmmBFh_Kn1orSsp_WZtnrgvXRiMlJKsdMvo3I6FldhxIOMRGoWvKbn5S8vaCkCOvd5igXGfjhjL8CfGPdhfjb3yWX8WEiNZcM7OxC97jJaLIigJnpjEbbjD6ddT6kKquLtB854AN-7m6QZ3zVWzm9IayY8UfL-RRUj4zd3PZGymg9yUymQOtvF1r23yzo0ASLhxBL0fqjx1LVyYqjwkEEgwGaqAwuYjtxkWwlyAs0frW3snaO6bVg"/>
+<div className="relative h-full w-full overflow-hidden">
+<NextImage
+  alt="Industrial pharmaceutical manufacturing line"
+  className="absolute inset-0 w-full h-full object-cover grayscale brightness-50 contrast-125"
+  src="/images/archival-hero.jpg"
+  fill
+/>
+</div>
 <div className="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent"></div>
 <div className="relative z-10 p-12 w-full max-w-7xl mx-auto grid grid-cols-12 gap-8">
 <div className="col-span-12 md:col-span-8">

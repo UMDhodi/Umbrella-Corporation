@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import NextImage from 'next/image';
 
 export default function BoilerplateTextPage() {
   return (
@@ -17,7 +18,13 @@ export default function BoilerplateTextPage() {
       <section className="relative min-h-screen flex flex-col justify-end overflow-hidden">
         {/* Background Image Container */}
         <div className="absolute inset-0 z-0">
-          <img className="w-full h-full object-cover filter brightness-[0.3] contrast-125 blur-[2px]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUZIM_mU0GKpSNcPS6PJAUz6hf6BHaFBTL6zjm2p8Wd-HFEky8_Pkv4Fzwlxi61mnOPdu_DSNx3VBAj6gkmiSi_DtzVRjsAmrnbttTWjgYhSjhaAzfE4ZO7Q1ya5g14MYUIWW911mqLFt7s6uy1bnIKxg8sWUSI0teUwGyTfSPHnIM5m-BU9xwomNvPDYFNoXS7HSk3H4kpcFfkR5Eyy3wa3h_aS71QeGc_Bt1vBZPHnAqKxVFVNky5Ass4oH87-wtGlUBhAiZ4N8"/>
+          <NextImage 
+            src="/images/executive-backdrop.jpg" 
+            alt="Executive Backdrop" 
+            fill 
+            className="object-cover filter brightness-[0.3] contrast-125 blur-[2px]" 
+            priority
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent"></div>
           <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_50%,rgba(0,0,0,0.5)_50%)] bg-[size:100%_4px] opacity-10 pointer-events-none"></div>
         </div>
@@ -146,7 +153,12 @@ export default function BoilerplateTextPage() {
             </div>
           </div>
           <div className="lg:col-span-8 relative aspect-video bg-surface-container overflow-hidden border border-surface-variant/30 flex items-center justify-center">
-            <img className="w-full h-full object-cover grayscale opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3LLXkP1S6khVUbMeACGhxnm4eS4kYrhGVlZiBHifRzh_ghBaews6wUJcnx5n3d4Vkv9PCDOKhxqX03DdL_UZE2kwKQbFsdNJkYtsyOUWO9Bd5EJTlUfhiznx8dD4W_Wdic5P3NP6gz9g-2GtK7dYm5AYpFnuJ0xal3FTveKIRWvqXM1ujOXT9o372756wA4GpeXuFDMSRGlYYZOpYyMAwol7xdUloBXHbt7hn9RTbHUEcBHVGiG91kKSqOgv993KAw4jpf6mz5PM" alt="Static Global Operations Map"/>
+            <NextImage 
+              src="/images/operations-map.jpg" 
+              alt="Global Operations Map" 
+              fill 
+              className="object-cover grayscale opacity-60" 
+            />
           </div>
         </div>
       </section>

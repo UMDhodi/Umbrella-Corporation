@@ -1,5 +1,7 @@
-import Link from 'next/link';
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
+import NextImage from 'next/image';
 
 export default function PersonnelArchives() {
   return (
@@ -23,8 +25,8 @@ export default function PersonnelArchives() {
             <div className="bg-surface-container-high p-8 group relative overflow-hidden">
               <div className="absolute top-0 right-0 w-24 h-24 bg-primary-container/10 -mr-12 -mt-12 rotate-45"></div>
               <div className="flex items-start gap-6 relative z-10">
-                <div className="w-20 h-28 bg-surface-container-lowest flex items-center justify-center border border-outline-variant/20 grayscale">
-                  <img alt="Director Portrait" className="w-full h-full object-cover mix-blend-luminosity" data-alt="Corporate director in suit, monochrome profile" src="/images/Spencer.png" />
+                <div className="w-20 h-28 bg-surface-container-lowest relative overflow-hidden border border-outline-variant/20 grayscale">
+                  <NextImage alt="Director Portrait" className="w-full h-full object-cover mix-blend-luminosity" data-alt="Corporate director in suit, monochrome profile" src="/images/Spencer.png" fill />
                 </div>
                 <div className="flex-grow">
                   <p className="font-headline font-bold text-xs text-primary-container tracking-widest uppercase mb-1">ID: #000-001</p>

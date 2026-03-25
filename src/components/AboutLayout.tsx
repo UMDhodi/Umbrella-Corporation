@@ -1,4 +1,5 @@
 import React from 'react';
+import NextImage from 'next/image';
 
 export default function AboutLayout() {
   return (
@@ -10,7 +11,13 @@ export default function AboutLayout() {
         <section className="relative h-screen flex flex-col justify-end px-12 pb-24 overflow-hidden">
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10"></div>
-            <img className="w-full h-full object-cover grayscale brightness-50 opacity-40" data-alt="Brutalist concrete skyscraper against a dark sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuI02KD1m3UliikLeZlgfuG5VIbaPzMfxPy1X9DD647J-K8ret1dMS8Q-2yn04zWSuhWfV1kb4vH6X7IoQKbIPPcQHQbSFtll1eMk_SRepVopHEJVBxBsZVlmEdfdjrD4S9_zzbYNPnUStjtwVmssqaJfzGQmtQF27jI75fZs12VHCuud-zig8aL1caYL6PBhhqf_4GJ7zAyNz_WWcI9SP2YX8drK3vV5YzW-LmjidDLRST_Rhh5avUh1AgFb2EYGEZYDbFz9FFns" />
+            <NextImage
+              alt="Brutalist concrete skyscraper against a dark sky"
+              className="w-full h-full object-cover grayscale brightness-50 opacity-40"
+              src="/images/about-hero.jpg"
+              fill
+              priority
+            />
           </div>
           <div className="relative z-20 max-w-4xl">
             <p className="font-headline text-primary-container text-xs tracking-[0.4em] uppercase mb-4">ESTABLISHED 1968 | United States • LONDON • PARIS • TOKYO</p>
@@ -46,8 +53,13 @@ export default function AboutLayout() {
         {/* Our Vision (Human Evolution) */}
         <section className="py-32 px-12 bg-surface">
           <div className="asymmetric-grid gap-24">
-            <div className="hidden md:block">
-              <img className="w-full h-auto grayscale border-r-8 border-primary-container" data-alt="Microscopic view of cellular structures in high contrast" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPmHbN5oChvia5GpiVH1LEJdsy5h9IlQYf9GH88QI45xO_Ij_K7_sMXSgo_M5zQCMK0mOGvJG8s8Zs6iT-5VyYyucw4otKWhVz_Xv8k-T_CBTYB2v1aidJ6Wl-uc5SxiZW0SWwo-6wyfrL9OHk7nzWcXZzS9HiEnpAXreZXDtzeA-gODURnx3S_npgITobSv2Nhn18JRhcRMDTFUxLo0q1v5uVKvdYzUYwnU1oTmsS0N0qeSSJhDjajYqk7Npzct1raw4RvOIRrT0" />
+            <div className="hidden md:block relative w-full h-[400px]">
+              <NextImage 
+                src="/images/microscopic-view.jpg" 
+                alt="Microscopic view" 
+                fill 
+                className="object-cover grayscale border-r-8 border-primary-container"
+              />
             </div>
             <div>
               <h2 className="font-headline text-xs tracking-[0.5em] uppercase text-primary-container mb-12">THE VISION</h2>
@@ -80,7 +92,12 @@ export default function AboutLayout() {
               <p className="text-xs uppercase tracking-widest opacity-60 group-hover:text-on-primary-container">Industrial Grade Solutions</p>
             </div>
             <div className="md:col-span-2 bg-surface-container-highest p-8 relative overflow-hidden flex flex-col justify-end group">
-              <img className="absolute inset-0 w-full h-full object-cover grayscale opacity-20 group-hover:opacity-40 transition-opacity" data-alt="Abstract image of pharmaceutical production lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxdoTjbIQh2Kke5iULSAM0JYj1Ig7UqYYLwnN0Wk6aym5hfYS951Jw0H2jtMYZw-25Ju_2Ce3qboVnO5BKylSxS77FoRrLoAW7luhL5Ve56oJJt_hULf2kPreg8blhfOgjLdJaYy-n15kPnk1uZ1zB_sRqeKNYu8MxHwR3vHyHWSfy9vq7wewJUTSr1FmHrJyU3ZU16oRJIiarQHJxl3vHQqHdQPrFRMlAEmoH0GjCG9hsMNxvPu7VsVzlpM0wqNAOrgeKXLuqETI" />
+              <NextImage 
+                src="/images/pharma-lines.jpg" 
+                alt="Pharmaceutical lines" 
+                fill 
+                className="object-cover grayscale opacity-20 group-hover:opacity-40 transition-opacity"
+              />
               <div className="relative z-10">
                 <h4 className="font-headline font-black text-4xl uppercase tracking-tighter">Pharmaceuticals</h4>
                 <p className="text-sm mt-2 opacity-80 max-w-xs">Our core heritage. Eradicating disease through aggressive molecular management.</p>

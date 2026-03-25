@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-
+import NextImage from 'next/image';
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -21,7 +21,14 @@ export default function Navigation() {
   return (
     <nav className="bg-[#131313] dark:bg-[#131313] docked full-width top-0 z-50 flex justify-between items-center w-full px-8 py-4 fixed">
       <div className="flex items-center gap-3">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Umbrella_Corporation_logo.svg" alt="Umbrella Logo" className="w-8 h-8 opacity-90" />
+        <NextImage 
+          src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Umbrella_Corporation_logo.svg" 
+          alt="Umbrella Logo" 
+          width={32} 
+          height={32} 
+          priority
+          className="opacity-90 h-8 w-auto" 
+        />
         <div className="text-[28px] font-black tracking-tighter text-[#ffffff] dark:text-[#ffffff]" style={{ fontFamily: "var(--font-michroma)" }}>UMBRELLA CORP</div>
       </div>
       <div className="hidden md:flex gap-8 items-center">

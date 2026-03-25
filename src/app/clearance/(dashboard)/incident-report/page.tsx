@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import NextImage from 'next/image';
 
 export default function IncidentReport() {
   return (
@@ -25,7 +26,14 @@ export default function IncidentReport() {
 <div className="flex-1 overflow-hidden">
 {/*  Watermark  */}
 <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none z-0 w-[800px]">
-<img alt="Umbrella Corporation Logo Watermark" className="w-full grayscale brightness-200" data-alt="Large Umbrella Corporation geometric logo watermark" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBccpbR9eOMT2-DXFQFwO7SBv1uV1QNSgE5gqt-Ronin5iVF8s3dpBKRqyl95qfqO4qM4kMQQHA6ractjQLc9i39vlq5WiWjSEMFd6YX_V--85tP7NivXq7R2K504puoPXhEmOlGVAIqLDH97In57I0Hz6-YerEScORCjEoTrLcuCYFFij9YGtBoOgUCX6z1Es8kYsbsSwdXfGK_OcgeVGZi3_csztz4g_qK3DMEuuEo7wWi-udQYXsSRMEi3R3x8TxL838Ay861A"/>
+<div className="absolute inset-0 opacity-10 pointer-events-none">
+<NextImage 
+  alt="Umbrella Corporation Logo Watermark" 
+  src="/images/incident-report.jpg"
+  fill
+  className="object-cover grayscale opacity-60"
+/>
+</div>
 </div>
 {/*  1. Incident Header  */}
 
@@ -149,7 +157,14 @@ export default function IncidentReport() {
 <footer className="bg-[#0e0e0e] flex flex-col md:flex-row justify-between items-center w-full px-12 py-12 border-t border-[#353534]/30 relative z-20">
 <div className="flex flex-col items-center md:items-start gap-4 mb-8 md:mb-0">
 <div className="flex items-center gap-2 opacity-50 grayscale">
-<img alt="Umbrella Logo" className="w-6 h-6" data-alt="Small Umbrella Corporation logo mark" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYHTEqnc1ji_WiGvJW_p0V65UfFbBiI5utPoZyX1zNnwL5jH_8-icrx4FUHGCzc3WzvnAfOZS-o3L84GKL-gOlrhvGbA0-Nw2A_xSbR_on1KN-YCI8RY6zI47wmK6PkB1KMhFaHmhetxJxRu8Os_S5pR4zSaRyBoZ96JP-mOJZWh8KS2KT8hnTLvbKsRewpyFZxFa3StuoNrGoVhNbPC2D00hVbvBTEK5HaepTYYCM8M5MVbvSEuxeYY2b1qMlIRzS2nA1cmZx-kI"/>
+<div className="relative w-6 h-6">
+  <NextImage 
+    alt="Umbrella Logo" 
+    src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Umbrella_Corporation_logo.svg"
+    fill
+    className="object-contain"
+  />
+</div>
 <span className="font-headline font-bold text-xs tracking-tighter uppercase">Sovereign Pharmaceuticals</span>
 </div>
 <p className="font-['Inter'] uppercase text-[10px] tracking-[0.2em] leading-relaxed text-[#e5e2e1] opacity-50 text-center md:text-left max-w-md">

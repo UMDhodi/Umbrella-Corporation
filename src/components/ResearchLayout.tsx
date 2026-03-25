@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import dynamic from 'next/dynamic';
+import NextImage from 'next/image';
 
 const DarkMap = dynamic(() => import('./DarkMap'), { ssr: false });
 
@@ -26,7 +27,13 @@ export default function ResearchLayout() {
                                 </p>
                             </div>
                             <div className="col-span-12 lg:col-span-4 flex items-end justify-center">
-                                <img alt="Umbrella Logo" className="w-64 h-64 opacity-20 invert" data-alt="The central Umbrella Corporation hexagonal logo in red and white" src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Umbrella_Corporation_logo.svg" />
+                                <NextImage
+                                    src="/images/umbrella-logo.svg"
+                                    alt="Umbrella Logo"
+                                    width={256}
+                                    height={256}
+                                    className="w-64 h-64 opacity-20 invert"
+                                />
                             </div>
                         </div>
                     </div>
@@ -44,8 +51,13 @@ export default function ResearchLayout() {
                                         Experimental viral development targeting enhanced subject viability and controlled mutation. Neural response patterns and systemic adaptation under continuous observation.
                                     </p>
                                 </div>
-                                <div className="w-full aspect-video overflow-hidden mb-6">
-                                    <img className="w-full h-full object-cover grayscale contrast-125" data-alt="High-contrast black and white microscopic image of viral structures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn9or-oRFbIGTguiJEKEUyF0h4C5FV_Z47guLb27ytk9pw4J-9r_PuHgJCRD2zNvLm4QC5RIL_4Z0E6TlIKPUttU_f_bfy7kzFRrwkoCKV2HZb4xsaMvkmivR0By-iMUwff35QjycoWF9wUMDJ4Nb4OLBYmhiGojSirN1W4JTVOPFpeb89Rew0HIeorieSCnP14uJgktg8s6uXu77HQVG4lHW4G5kIiEVpfmsouxEgyhvGV7E_B80Lfb7BqFTPzSpIiYUw7NMcXOs" />
+                                <div className="w-full aspect-video relative overflow-hidden mb-6">
+                                    <NextImage
+                                        alt="Viral structures"
+                                        src="/images/virus.png"
+                                        fill
+                                        className="object-cover opacity-60 grayscale group-hover:grayscale-0 transition-all duration-700"
+                                    />
                                 </div>
                                 <a className="text-[10px] font-headline font-bold tracking-[0.3em] uppercase text-primary hover:text-white transition-colors" href="#">Review Data Logs -&gt;</a>
                             </div>
@@ -61,8 +73,13 @@ export default function ResearchLayout() {
                                         Controlled development of enhanced organic subjects through viral integration and adaptive conditioning. High-variance specimens are maintained under maximum containment protocols.
                                     </p>
                                 </div>
-                                <div className="w-full aspect-video overflow-hidden mb-6">
-                                    <img className="w-full h-full object-cover grayscale opacity-50" data-alt="A clinical profile silhouette of an experimental biological subject" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_mZtf6LVo8V7kd5NfV18kQHO2tbO2fv378Y1vI8VaE0xV5ISeI69MAywKdvNKJzUN8x8HODjukiDCxNykDxbHtygML0MkoRGPqz-5WWfDPGa4Os_BHwSehA8D2IECdQu6F8Kt_h5Lq-qd8efYxXeQJcdE57v36jR6yKjOpLUBnPiHZ3CgMLeZe_SS8oxzwjadN0x3ztRvDKLGUMLVjAEpig8hrWoaOJhc-17QZ5-L_5Bnl1KmfLlqKeSbX7E8yc1yUxJ6LgKdlxQ" />
+                                <div className="w-full aspect-video relative overflow-hidden mb-6">
+                                    <NextImage
+                                        src="/images/specimen-profile.jpg"
+                                        alt="Specimen Profile"
+                                        fill
+                                        className="object-cover opacity-60 grayscale group-hover:grayscale-0 transition-all duration-700"
+                                    />
                                 </div>
                                 <a className="text-[10px] font-headline font-bold tracking-[0.3em] uppercase text-primary-container hover:text-primary transition-colors" href="#">Tactical Assessment -&gt;</a>
                             </div>

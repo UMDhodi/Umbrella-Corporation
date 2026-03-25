@@ -21,7 +21,7 @@ export const pressReleases: Record<string, PressRelease> = {
       "In a significant partnership with the B.S.A.A. (Bioterrorism Security Assessment Alliance), Blue Umbrella is pleased to announce that its newest 'Awakening' series of anti-viral agents has successfully transitioned into mass production. This next generation of medical countermeasures is designed to provide rapid response and protection against emerging biological contingencies.",
       "With these advanced assets now operational, Blue Umbrella is positioned to lead the global defense against bioterrorism. Our mission has evolved: our business is no longer merely the creation of life, but the absolute preservation of it."
     ],
-    imageUrl: "./images/blue umbrella.png",
+    imageUrl: "/images/blue-umbrella.png",
     author: "Umbrella Public Relations Division",
     pdfUrl: "/doc/BLUE UMBRELLA.pdf"
   },
@@ -35,7 +35,7 @@ export const pressReleases: Record<string, PressRelease> = {
       "Initial internal audits suggest that the localized crisis was exacerbated by the gross negligence of the Raccoon City Police Department and the late Mayor Michael Warren. Umbrella Corporation maintains that its facilities were operating within safety parameters until compromised by civil unrest and the subsequent failure of city-managed utility grids.",
       "As of October 2, Umbrella is fully cooperating with a congressional inquiry. We have deployed specialized Bio-Hazard Countermeasure Service (U.B.C.S.) personnel to the perimeter to assist in environmental monitoring. Any rumors regarding experimental biological agents are categorized as malicious misinformation; the corporation remains committed to its motto: 'Protecting the Health of the People.'"
     ],
-    imageUrl: "./images/raccoon_city.png",
+    imageUrl: "/images/raccoon_city.png",
     author: "Umbrella Public Relations Division",
     pdfUrl: "/doc/EMERGENCY.pdf"
   },
@@ -49,7 +49,7 @@ export const pressReleases: Record<string, PressRelease> = {
       "The corporation confirms that the source of the leak has been fully contained. To ensure the continued well-being of the community and the integrity of the local ecosystem, a specialized sanitization sweep is currently in progress.",
       "While these containment efforts are completed, Umbrella Corporation strongly urges all hikers, campers, and local residents to remain strictly on marked trails within the Arklay forest. Adherence to these boundaries is essential until the biotech teams have concluded their final safety protocols."
     ],
-    imageUrl: "./images/arklay_mountain.png",
+    imageUrl: "/images/arklay_mountain.png",
     author: "Regional Security Command",
     pdfUrl: "/doc/ARKLAY.pdf"
   },
@@ -91,7 +91,7 @@ export const pressReleases: Record<string, PressRelease> = {
       "This facility represents a multi-billion dollar investment into the future of biological sciences and corporate sovereignty.",
       "The board expects operations to commence early next year, driving unparalleled growth in the consumer medical division."
     ],
-    imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuDOVbrDKKfFc1TMzRXoBBwx0kcmmBFh_Kn1orSsp_WZtnrgvXRiMlJKsdMvo3I6FldhxIOMRGoWvKbn5S8vaCkCOvd5igXGfjhjL8CfGPdhfjb3yWX8WEiNZcM7OxC97jJaLIigJnpjEbbjD6ddT6kKquLtB854AN-7m6QZ3zVWzm9IayY8UfL-RRUj4zd3PZGymg9yUymQOtvF1r23yzo0ASLhxBL0fqjx1LVyYqjwkEEgwGaqAwuYjtxkWwlyAs0frW3snaO6bVg",
+    imageUrl: "/images/archival-hero.jpg",
     author: "Public Relations Dept.",
     pdfUrl: "/doc/EXPENSION.pdf"
   }

@@ -1,7 +1,9 @@
 'use client';
+
 import React from 'react';
 import { employees } from '@/data/employees';
 import EmployeeSearch from '@/components/EmployeeSearch';
+import NextImage from 'next/image';
 
 export default function FoundersLayout() {
   return (
@@ -25,9 +27,14 @@ export default function FoundersLayout() {
           {/* Founder 01: Oswell E. Spencer */}
           <div className="group">
             <div className="grid grid-cols-1 md:grid-cols-2 bg-surface-container-low min-h-[500px]">
-              <div className="relative overflow-hidden bg-surface-container-highest h-[400px] md:h-auto">
-                <img alt="Oswell E. Spencer" className="w-full h-full object-cover grayscale contrast-125 brightness-75 group-hover:scale-105 transition-transform duration-700" src="/images/Spencer.png" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent md:hidden"></div>
+              <div className="relative h-[500px] overflow-hidden group">
+                <NextImage
+                  alt="Oswell E. Spencer"
+                  src="/images/Spencer.png"
+                  fill
+                  className="object-cover object-top grayscale contrast-125 brightness-75 group-hover:scale-105 transition-transform duration-700"
+                  priority
+                />
               </div>
               <div className="p-12 flex flex-col justify-center">
                 <span className="font-headline text-primary-container font-bold tracking-widest text-xs uppercase mb-4">Chief Executive / Co-Founder</span>
@@ -50,8 +57,13 @@ export default function FoundersLayout() {
           {/* Founder 02: Edward Ashford */}
           <div className="group">
             <div className="grid grid-cols-1 md:grid-cols-2 bg-surface-container-low min-h-[500px]">
-              <div className="relative overflow-hidden bg-surface-container-highest h-[400px] md:h-auto order-1 md:order-2">
-                <img alt="Edward Ashford" className="w-full h-full object-cover grayscale contrast-150 brightness-50 group-hover:scale-105 transition-transform duration-700" src="/images/Ashford.png" />
+              <div className="relative h-[500px] overflow-hidden bg-surface-container-highest order-1 md:order-2">
+                <NextImage 
+                  alt="Edward Ashford" 
+                  src="/images/Ashford.png" 
+                  fill
+                  className="object-cover object-top grayscale contrast-150 brightness-50 group-hover:scale-105 transition-transform duration-700" 
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent md:hidden"></div>
               </div>
               <div className="p-12 flex flex-col justify-center order-2 md:order-1">
@@ -75,8 +87,13 @@ export default function FoundersLayout() {
           {/* Founder 03: James Marcus */}
           <div className="group">
             <div className="grid grid-cols-1 md:grid-cols-2 bg-surface-container-low min-h-[500px]">
-              <div className="relative overflow-hidden bg-surface-container-highest h-[400px] md:h-auto">
-                <img alt="James Marcus" className="w-full h-full object-cover grayscale contrast-125 brightness-90 group-hover:scale-105 transition-transform duration-1000" src="/images/Marcus.png" />
+              <div className="relative h-[500px] overflow-hidden bg-surface-container-highest">
+                <NextImage 
+                  alt="James Marcus" 
+                  src="/images/Marcus.png" 
+                  fill
+                  className="object-cover object-top grayscale contrast-125 brightness-90 group-hover:scale-105 transition-transform duration-1000" 
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent md:hidden"></div>
               </div>
               <div className="p-12 flex flex-col justify-center">

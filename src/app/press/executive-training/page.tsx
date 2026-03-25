@@ -2,13 +2,22 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import NextImage from 'next/image';
 
 export default function ExecutiveTrainingPage() {
-  const [submitState, setSubmitState] = useState<'idle' | 'loading' | 'success'>('idle');
+  const [submitState, setSubmitState] = useState<'idle' | 'loading' | 'success' | 'denied'>('idle');
+  const [isCertified, setIsCertified] = useState(false);
+  const [formData, setFormData] = useState({ name: '', email: '' });
 
   const handleSubmit = (e: React.MouseEvent) => {
     e.preventDefault();
     if (submitState !== 'idle') return;
+
+    if (!isCertified || !formData.name || !formData.email) {
+      setSubmitState('denied');
+      setTimeout(() => setSubmitState('idle'), 2000);
+      return;
+    }
 
     setSubmitState('loading');
     
@@ -21,9 +30,9 @@ export default function ExecutiveTrainingPage() {
     <div className="min-h-screen w-screen bg-[#0e0e0e] text-[#e5e2e1] font-body selection:bg-[#d2002a] selection:text-[#ffe1e0] relative flex items-center justify-center p-4 overflow-hidden">
       
       {/* Background Ambience */}
-      <div className="fixed inset-0 grayscale contrast-125 brightness-[0.2] z-0">
-        <img alt="Facility Core" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdO0fiP0KXNozgUnGRAM0evNW8ENjtfeP9dwQSyKVBEQiHX3yskMaKXxbXpdlgRPGk-8h0eilD_yH9mclF3-oLCJ2DozC9kqi_ual0LjdrBiQX_0sALwqQvybGg93bkH9jsfRePx9J0PSPX0wfF6JWCsgiaD4TOyOCWca3xQRQsj2GQCM2O0ZQe0-FlolgItykNw4Vxz4MqQHPFdVu90SVvH1__FWBUnX37-0f66rgmBbvEWWDnhZ_hizsHVmP99FyxwjXYJqTpX0"/>
-      </div>
+        <div className="absolute inset-0 grayscale contrast-125 opacity-40">
+          <NextImage alt="Facility Core" fill className="object-cover" src="/images/facility-core.jpg" />
+        </div>
       
       {/* Static Grid Overlay */}
       <div className="fixed inset-0 pointer-events-none opacity-[0.04] z-0" style={{ backgroundImage: "radial-gradient(#e5e2e1 1px, transparent 1px)", backgroundSize: "24px 24px" }}></div>
@@ -56,18 +65,38 @@ export default function ExecutiveTrainingPage() {
             <form className="space-y-6">
               <div className="group">
                 <label className="block font-['Space_Grotesk'] text-[10px] tracking-[0.2em] text-[#d2002a] uppercase mb-2">01. FULL CANDIDATE NAME</label>
-                <input className="w-full bg-[#1c1b1b] border border-transparent text-[#e5e2e1] py-3 px-4 focus:ring-0 focus:outline-none focus:border-[#d2002a] transition-all placeholder:text-[#393939] font-['Space_Grotesk'] uppercase text-sm" placeholder="SURNAME, GIVEN NAME" type="text"/>
+                <input 
+                  className="w-full bg-[#1c1b1b] border border-transparent text-[#e5e2e1] py-3 px-4 focus:ring-0 focus:outline-none focus:border-[#d2002a] transition-all placeholder:text-[#393939] font-['Space_Grotesk'] uppercase text-sm" 
+                  placeholder="SURNAME, GIVEN NAME" 
+                  type="text"
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                />
               </div>
 
               <div className="group">
                 <label className="block font-['Space_Grotesk'] text-[10px] tracking-[0.2em] text-[#d2002a] uppercase mb-2">02. OFFICIAL CORPORATE DOMAIN</label>
-                <input className="w-full bg-[#1c1b1b] border border-transparent text-[#e5e2e1] py-3 px-4 focus:ring-0 focus:outline-none focus:border-[#d2002a] transition-all placeholder:text-[#393939] font-['Space_Grotesk'] uppercase text-sm" placeholder="ID_NUMBER@UMBRELLA.CORP" type="email"/>
+                <input 
+                  className="w-full bg-[#1c1b1b] border border-transparent text-[#e5e2e1] py-3 px-4 focus:ring-0 focus:outline-none focus:border-[#d2002a] transition-all placeholder:text-[#393939] font-['Space_Grotesk'] uppercase text-sm" 
+                  placeholder="ID_NUMBER@UMBRELLA.CORP" 
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                />
               </div>
 
 
 
               <div className="flex items-start gap-4 p-4 bg-[#1c1b1b] border-l-2 border-[#d2002a]">
-                <input className="mt-1 bg-[#2a2a2a] border-none text-[#d2002a] focus:ring-0 cursor-pointer" type="checkbox" id="certify"/>
+                <input 
+                  className="mt-1 bg-[#2a2a2a] border-none text-[#d2002a] focus:ring-0 cursor-pointer" 
+                  type="checkbox" 
+                  id="certify"
+                  checked={isCertified}
+                  onChange={(e) => setIsCertified(e.target.checked)}
+                />
                 <label htmlFor="certify" className="text-[9px] font-['Inter'] uppercase leading-relaxed text-[#b6b5b5] cursor-pointer tracking-wider">
                   I HEREBY CERTIFY THAT THE INFORMATION PROVIDED IS ACCURATE. I ACKNOWLEDGE THAT ENROLLMENT IN THE EXECUTIVE TRAINING PROGRAM INCLUDES NON-DISCLOSURE AGREEMENTS REGARDING LEVEL 4 BIOLOGICAL RESEARCH.
                 </label>
@@ -79,11 +108,13 @@ export default function ExecutiveTrainingPage() {
                     ? 'bg-[#d2002a] hover:bg-[#ffb3b0] text-[#ffe1e0] hover:text-[#0e0e0e] active:scale-[0.99] cursor-pointer' 
                     : submitState === 'loading'
                     ? 'bg-[#d2002a]/40 text-[#ffe1e0]/80 cursor-wait shadow-inner'
+                    : submitState === 'denied'
+                    ? 'bg-red-900 text-red-200 border border-red-600 animate-shake'
                     : 'bg-[#00ff9d]/10 text-[#00ff9d] border border-[#00ff9d]/40 cursor-default'
                 }`} 
                 type="button" 
                 onClick={handleSubmit}
-                disabled={submitState !== 'idle'}
+                disabled={submitState === 'loading' || submitState === 'success'}
               >
                 {submitState === 'idle' && (
                   <>
@@ -101,6 +132,12 @@ export default function ExecutiveTrainingPage() {
                   <>
                     TRANSMISSION SUCCESSFUL
                     <span className="material-symbols-outlined text-sm">check_circle</span>
+                  </>
+                )}
+                {submitState === 'denied' && (
+                  <>
+                    ACCESS DENIED // DATA INCOMPLETE
+                    <span className="material-symbols-outlined text-sm">error</span>
                   </>
                 )}
               </button>

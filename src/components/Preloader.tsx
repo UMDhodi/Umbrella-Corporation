@@ -4,6 +4,7 @@ import { Environment, Float, Preload, Bounds, useProgress } from '@react-three/d
 import gsap from 'gsap';
 import * as THREE from 'three';
 import CustomLogo from './CustomLogo';
+import { useAssetLoader } from '@/hooks/useAssetLoader';
 
 function RotatingLogo() {
   const groupRef = useRef<THREE.Group>(null);
@@ -24,7 +25,7 @@ function RotatingLogo() {
 }
 
 export default function Preloader({ onComplete }: { onComplete: () => void }) {
-  const [progress, setProgress] = useState(0);
+  const { totalProgress: progress, isLoaded } = useAssetLoader();
   const [logoRendered, setLogoRendered] = useState(false);
   const { active, progress: loadProgress } = useProgress();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -47,66 +48,40 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
   }, []);
 
   useEffect(() => {
-    // Prevent the loading bar from running until logo is visible
-    if (!logoRendered) return;
+    if (isLoaded) {
+      // Outro animation
+      const tl = gsap.timeline({
+        onComplete: () => {
+          gsap.to(containerRef.current, {
+            autoAlpha: 0,
+            duration: 0.6,
+            ease: 'power2.inOut',
+            onComplete: onComplete
+          });
+        }
+      });
 
-    let currentProgress = 0;
-    let timerId: NodeJS.Timeout;
-
-    const simulateLoading = () => {
-      // Small jumps normally, large jumps occasionally
-      const jump = Math.random() > 0.8 ? Math.floor(Math.random() * 15) + 5 : Math.floor(Math.random() * 4) + 1;
-      currentProgress += jump;
-      
-      if (currentProgress >= 100) {
-        currentProgress = 100;
-        setProgress(currentProgress);
-        
-        // Outro animation
-        const tl = gsap.timeline({
-          onComplete: () => {
-            gsap.to(containerRef.current, {
-              autoAlpha: 0,
-              duration: 0.6,
-              ease: 'power2.inOut',
-              onComplete: onComplete
-            });
-          }
-        });
-
-        tl.to(logoWrapperRef.current, {
-          scale: 1.5,
-          opacity: 0,
-          filter: 'blur(20px)',
-          duration: 0.8,
-          ease: 'power3.in',
-        }, "+=0.1")
-        .to(textRef.current, {
-          y: 20,
-          opacity: 0,
-          duration: 0.4,
-          ease: 'power2.in'
-        }, "-=0.6")
-        .to(loaderBarRef.current, {
-          width: '0%',
-          opacity: 0,
-          duration: 0.3,
-          ease: 'power2.in'
-        }, "-=0.6");
-      } else {
-        setProgress(currentProgress);
-        
-        // Realistic next tick delay: usually fast (50-150ms), occasionally hangs (up to 400ms)
-        const nextTick = Math.random() > 0.9 ? Math.floor(Math.random() * 300) + 100 : Math.floor(Math.random() * 100) + 50;
-        timerId = setTimeout(simulateLoading, nextTick);
-      }
-    };
-
-    // First initial tick
-    timerId = setTimeout(simulateLoading, 150);
-
-    return () => clearTimeout(timerId);
-  }, [logoRendered, onComplete]);
+      tl.to(logoWrapperRef.current, {
+        scale: 1.5,
+        opacity: 0,
+        filter: 'blur(20px)',
+        duration: 0.8,
+        ease: 'power3.in',
+      }, "+=0.1")
+      .to(textRef.current, {
+        y: 20,
+        opacity: 0,
+        duration: 0.4,
+        ease: 'power2.in'
+      }, "-=0.6")
+      .to(loaderBarRef.current, {
+        width: '0%',
+        opacity: 0,
+        duration: 0.3,
+        ease: 'power2.in'
+      }, "-=0.6");
+    }
+  }, [isLoaded, onComplete]);
 
   return (
     <div 

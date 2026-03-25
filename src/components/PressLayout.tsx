@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import NextImage from 'next/image';
 import { pressReleases } from '@/data/press-releases';
 
 export default function PressLayout() {
@@ -12,15 +13,25 @@ export default function PressLayout() {
         {/* HERO SECTION */}
         <header className="relative w-full h-[614px] flex items-end px-12 pb-24 bg-surface-container-lowest overflow-hidden">
           <div className="absolute inset-0 opacity-40 mix-blend-luminosity">
-            <img
+            <NextImage
               alt="Brutalist concrete corporate headquarters"
               className="w-full h-full object-cover"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7UXLS3kJCY08idebwz9xyc7OVwSi9tdAEWdrDGZsSiBR2PM3ZON7j3_TSKrowqJijinGcc2nf4sdwSMAcC_8gV5eJ4fGmRD0JfYR3J0spkm2xcQGMYqyCuf2b2LyJQ1IGwqSQyFcLM8VQZME_LZPMfymDRlaLd9y-hOLDNRZfDVEQ3-NTLXu5UJgkFa0F2BhGPkBlWdTVFtnfa2OtWouscf_FmN9nxWvYonT8BtjE2GJaOnLVnYFRvhTvuC8s_hZqrlsNzW612ms"
+              src="/images/press_hero.png"
+              fill
+              priority
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
           <div className="relative z-10 max-w-5xl">
             <div className="flex items-center space-x-4 mb-6">
+              <div className="flex-shrink-0 relative w-12 h-12">
+                <NextImage
+                  src="/images/umbrella-logo.svg"
+                  alt="Umbrella Logo"
+                  fill
+                  className="object-contain brightness-0 invert opacity-40"
+                />
+              </div>
               <div className="h-[2px] w-12 bg-primary-container"></div>
               <span className="font-label text-xs tracking-[0.3em] uppercase text-primary-container font-bold">Internal Protocol 1969-A</span>
             </div>
@@ -50,12 +61,13 @@ export default function PressLayout() {
                     <h2 className="font-headline text-4xl md:text-5xl font-extrabold tracking-tighter mb-8 group-hover:text-primary transition-colors">
                       {release.title}
                     </h2>
-                    {release.imageUrl && (
-                      <div className="mb-10 overflow-hidden" style={{ aspectRatio: '21/9' }}>
-                        <img
+                    {release.imageUrl && release.imageUrl.trim() !== "" && (
+                      <div className="mb-10 relative overflow-hidden aspect-[21/9]">
+                        <NextImage
                           alt={release.subtitle}
-                          className="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700"
+                          className="object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700"
                           src={release.imageUrl}
+                          fill
                         />
                       </div>
                     )}
