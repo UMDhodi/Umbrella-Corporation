@@ -35,8 +35,8 @@ export default function PressLayout() {
               <div className="h-[2px] w-12 bg-primary-container"></div>
               <span className="font-label text-xs tracking-[0.3em] uppercase text-primary-container font-bold">Internal Protocol 1969-A</span>
             </div>
-            <h1 className="font-headline text-6xl md:text-8xl font-black tracking-tighter leading-none mb-6">
-              ARCHIVAL <br />ANNOUNCEMENTS // <span className="text-primary-container">PRESS RELATIONS</span>
+            <h1 className="font-headline text-4xl md:text-8xl font-black tracking-tighter leading-none mb-6">
+              ARCHIVAL <br className="hidden md:block" />ANNOUNCEMENTS // <span className="text-primary-container">PRESS RELATIONS</span>
             </h1>
             <p className="font-body text-xl md:text-2xl text-secondary max-w-2xl leading-relaxed">
               Official dissemination of corporate progress and regulatory compliance. All communications are subject to Level 4 security review.
@@ -45,10 +45,10 @@ export default function PressLayout() {
         </header>
 
         {/* CONTENT GRID */}
-        <section className="min-h-screen" style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 350px' }}>
+        <section className="min-h-screen grid grid-cols-1 lg:grid-cols-[1fr_350px]">
 
           {/* NEWS FEED */}
-          <div className="px-12 py-24 space-y-32">
+          <div className="px-6 md:px-12 py-12 md:py-24 space-y-20 md:space-y-32">
 
             {Object.values(pressReleases).map((release, index) => (
               <article key={release.id} className="group relative">
@@ -87,14 +87,14 @@ export default function PressLayout() {
           </div>
 
           {/* SIDEBAR */}
-          <aside className="relative">
+          <aside className="relative border-t lg:border-t-0 lg:border-l border-zinc-800/30">
             <div
-              className="sticky top-20 p-12 border-l space-y-16"
+              className="lg:sticky lg:top-20 p-8 md:p-12 space-y-12 md:space-y-16 pb-32 md:pb-16"
               style={{
-                height: 'calc(100vh - 80px)',
-                background: 'rgba(57,57,57,0.15)',
+                height: 'auto',
+                minHeight: '100%',
+                background: 'rgba(57,57,57,0.05)',
                 backdropFilter: 'blur(20px)',
-                borderColor: 'rgba(255,255,255,0.05)',
               }}
             >
               {/* Media Relations */}

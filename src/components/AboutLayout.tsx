@@ -19,9 +19,9 @@ export default function AboutLayout() {
               priority
             />
           </div>
-          <div className="relative z-20 max-w-4xl">
-            <p className="font-headline text-primary-container text-xs tracking-[0.4em] uppercase mb-4">ESTABLISHED 1968 | United States • LONDON • PARIS • TOKYO</p>
-            <h1 className="font-headline text-7xl md:text-9xl font-extrabold tracking-tighter leading-none mb-8">
+          <div className="relative z-20 max-w-4xl px-6 md:px-0">
+            <p className="font-headline text-primary-container text-[9px] md:text-xs tracking-wider md:tracking-[0.4em] uppercase mb-6">ESTABLISHED 1968 | United States • LONDON • PARIS • TOKYO</p>
+            <h1 className="font-headline text-3xl sm:text-4xl md:text-9xl font-extrabold tracking-tight leading-[0.9] mb-8">
               NEST <br />
               <span className="text-primary-container">UNDERGROUND RESEARCH FACILITY.</span>
             </h1>
@@ -31,11 +31,11 @@ export default function AboutLayout() {
           </div>
         </section>
         {/* Corporate History */}
-        <section className="py-32 px-12 bg-surface-container-lowest">
-          <div className="grid md:grid-cols-12 gap-12">
+        <section className="py-20 md:py-32 px-6 md:px-12 bg-surface-container-lowest">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
             <div className="md:col-span-4">
               <h2 className="font-headline text-xs tracking-[0.5em] uppercase text-primary-container mb-8">ORIGIN DECREE</h2>
-              <p className="text-5xl font-headline font-bold tracking-tighter leading-tight">Founded 1968. <br />The Birth of Order.</p>
+              <p className="text-3xl md:text-5xl font-headline font-bold tracking-tighter leading-tight">Founded 1968. <br />The Birth of Order.</p>
             </div>
             <div className="md:col-span-7 md:col-start-6">
               <div className="space-y-8 text-on-surface-variant leading-relaxed text-lg">
@@ -51,8 +51,8 @@ export default function AboutLayout() {
           </div>
         </section>
         {/* Our Vision (Human Evolution) */}
-        <section className="py-32 px-12 bg-surface">
-          <div className="asymmetric-grid gap-24">
+        <section className="py-20 md:py-32 px-6 md:px-12 bg-surface">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 md:gap-24">
             <div className="hidden md:block relative w-full h-[400px]">
               <NextImage 
                 src="/images/microscopic-view.jpg" 
@@ -62,9 +62,9 @@ export default function AboutLayout() {
               />
             </div>
             <div>
-              <h2 className="font-headline text-xs tracking-[0.5em] uppercase text-primary-container mb-12">THE VISION</h2>
-              <h3 className="font-headline text-6xl font-bold tracking-tighter mb-8 italic">Human Evolution <br />is not a matter of chance.</h3>
-              <p className="text-xl text-on-surface-variant leading-relaxed max-w-xl mb-12">
+              <h2 className="font-headline text-xs tracking-[0.5em] uppercase text-primary-container mb-6 md:mb-12">THE VISION</h2>
+              <h3 className="font-headline text-2xl sm:text-3xl md:text-6xl font-bold tracking-tight mb-8 italic">Human Evolution <br className="hidden sm:block" />is not a matter of chance.</h3>
+              <p className="text-base md:text-xl text-on-surface-variant leading-relaxed max-w-2xl mb-12">
                 Under the direction of Oswell E. Spencer, Umbrella pursues the deliberate advancement of the species through controlled viral research and selective enhancement. Natural limitations are to be overcome. Only those capable of adaptation will define the next stage of humanity.
               </p>
               <div className="grid grid-cols-2 gap-8 border-t border-outline-variant pt-12">
@@ -98,9 +98,9 @@ export default function AboutLayout() {
                 fill 
                 className="object-cover grayscale opacity-20 group-hover:opacity-40 transition-opacity"
               />
-              <div className="relative z-10">
-                <h4 className="font-headline font-black text-4xl uppercase tracking-tighter">Pharmaceuticals</h4>
-                <p className="text-sm mt-2 opacity-80 max-w-xs">Our core heritage. Eradicating disease through aggressive molecular management.</p>
+              <div className="relative z-10 w-full">
+                <h4 className="font-headline font-black text-2xl md:text-4xl uppercase tracking-tighter break-words">Pharmaceuticals</h4>
+                <p className="text-xs md:text-sm mt-2 opacity-80 max-w-xs">Our core heritage. Eradicating disease through aggressive molecular management.</p>
               </div>
             </div>
             <div className="bg-surface-container-high p-8 flex flex-col justify-between hover:bg-primary-container group transition-colors duration-300">
@@ -141,11 +141,11 @@ export default function AboutLayout() {
           </div>
         </section>
         {/* The Sovereign Mandate */}
-        <section className="py-48 px-12 text-center bg-surface-container-lowest relative overflow-hidden">
+        <section className="py-32 md:py-48 px-6 md:px-12 text-center bg-surface-container-lowest relative overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary-container opacity-[0.03] blur-[100px] rounded-full"></div>
           <div className="relative z-10 max-w-3xl mx-auto">
             <h2 className="font-headline text-xs tracking-[0.8em] uppercase text-primary-container mb-12">THE SOVEREIGN MANDATE</h2>
-            <p className="font-headline text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none mb-12">
+            <p className="font-headline text-3xl md:text-7xl font-black uppercase tracking-tighter leading-none mb-12">
               Our Business is Life Itself.
             </p>
             <div className="h-1 w-24 bg-primary-container mx-auto mb-12"></div>
@@ -155,13 +155,13 @@ export default function AboutLayout() {
           </div>
         </section>
         {/* Subsidiary Logo Cloud (Minimalist) */}
-        <section className="py-24 px-12 border-t border-outline-variant bg-surface">
-          <div className="flex flex-wrap justify-between items-center gap-12 opacity-30 grayscale contrast-125">
-            <span className="font-headline font-bold text-2xl tracking-tighter">PHARMACEUTICALS</span>
-            <span className="font-headline font-bold text-2xl tracking-tighter">HEAVY INDUSTRIES</span>
-            <span className="font-headline font-bold text-2xl tracking-tighter">LOGISTICS</span>
-            <span className="font-headline font-bold text-2xl tracking-tighter">AEROSPACE</span>
-            <span className="font-headline font-bold text-2xl tracking-tighter">SECURITY</span>
+        <section className="py-16 md:py-24 px-6 md:px-12 border-t border-outline-variant bg-surface pb-32">
+          <div className="flex flex-wrap justify-center md:justify-between items-center gap-8 md:gap-12 opacity-30 grayscale contrast-125">
+            <span className="font-headline font-bold text-xl md:text-2xl tracking-tighter">PHARMACEUTICALS</span>
+            <span className="font-headline font-bold text-xl md:text-2xl tracking-tighter">HEAVY INDUSTRIES</span>
+            <span className="font-headline font-bold text-xl md:text-2xl tracking-tighter">LOGISTICS</span>
+            <span className="font-headline font-bold text-xl md:text-2xl tracking-tighter text-center">AEROSPACE</span>
+            <span className="font-headline font-bold text-xl md:text-2xl tracking-tighter">SECURITY</span>
           </div>
         </section>
       </main>

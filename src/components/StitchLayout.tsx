@@ -25,8 +25,8 @@ export default function StitchLayout() {
   width={192}
   height={192}
 />
-<h1 className="font-headline text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter text-on-surface mb-6 uppercase leading-[0.9]">
-                    PRESERVING THE HEALTH <br/> <span className="text-primary-container">OF THE PEOPLE.</span>
+<h1 className="font-headline text-3xl md:text-5xl lg:text-7xl font-black tracking-tighter text-on-surface mb-6 uppercase leading-[0.9] px-4">
+                    PRESERVING THE HEALTH <br className="hidden md:block"/> <span className="text-primary-container">OF THE PEOPLE.</span>
 </h1>
 <div className="w-24 h-1 bg-primary-container mb-8"></div>
 <p className="font-body text-xs md:text-sm tracking-[0.3em] uppercase opacity-60 max-w-2xl">
@@ -38,7 +38,7 @@ export default function StitchLayout() {
 </div>
 </section>
 {/* Corporate Overview */}
-<section className="py-32 px-12 bg-surface">
+<section className="py-20 md:py-32 px-6 md:px-12 bg-surface">
 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 <div className="lg:col-span-4">
 <h2 className="font-headline text-xs font-black tracking-widest text-primary-container uppercase mb-4">Institutional Mandate</h2>
@@ -70,7 +70,7 @@ export default function StitchLayout() {
 </section>
 {/* Divisions Section: Modular Bento Grid */}
 <section className="py-24 bg-surface-container-lowest">
-<div className="px-12 mb-16">
+<div className="px-6 md:px-12 mb-16">
 <h2 className="font-headline text-3xl font-black tracking-tighter uppercase">Global Divisions</h2>
 <div className="w-16 h-1 bg-on-surface mt-2"></div>
 </div>
@@ -163,9 +163,9 @@ export default function StitchLayout() {
 </section>
 {/* Asymmetric Mission Block */}
 <section className="bg-surface relative overflow-hidden">
-<div className="grid grid-cols-1 md:grid-cols-2">
-<div className="bg-surface-container-high p-24">
-<h2 className="font-headline text-6xl font-black uppercase mb-12 leading-none">The <br/> Future is <br/> Modular.</h2>
+<div className="grid grid-cols-1 md:grid-cols-2 min-h-screen md:min-h-0">
+<div className="bg-surface-container-high p-8 md:p-24">
+<h2 className="font-headline text-4xl md:text-6xl font-black uppercase mb-12 leading-none">The <br/> Future is <br/> Modular.</h2>
 <p className="font-body text-xl opacity-80 leading-relaxed mb-8">
                         Our contribution to human evolution is not accidental. It is engineered. 
                     </p>

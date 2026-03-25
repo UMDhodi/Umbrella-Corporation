@@ -19,6 +19,16 @@ export default function ClearancePage() {
   const [countdown, setCountdown] = useState(30);
   const [showPass, setShowPass] = useState(false);
   const [audioPlaying, setAudioPlaying] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Fixed session ID
   const sessionId = useRef('UM-' + Math.random().toString(36).substring(2, 8).toUpperCase());
@@ -109,8 +119,41 @@ export default function ClearancePage() {
       <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-[#d2002a]" />
       <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-[#d2002a]" />
 
+      {/* ─── MOBILE BLOCK ─── */}
+      {isMobile && (
+        <div className="relative z-20 w-full max-w-md px-8 text-center">
+          <div className="mb-8 flex justify-center">
+            <NextImage
+              src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Umbrella_Corporation_logo.svg"
+              alt="Umbrella Corporation"
+              width={80}
+              height={80}
+              className="opacity-90 animate-pulse"
+              style={{ filter: 'drop-shadow(0 0 12px rgba(210,0,42,0.6))' }}
+            />
+          </div>
+          <h1 className="font-headline text-2xl font-black tracking-tight uppercase text-[#d2002a] mb-4">
+            SECURITY PROTOCOL ERROR
+          </h1>
+          <div className="bg-[#1c1b1b] border-l-4 border-[#d2002a] p-6 text-left mb-8">
+            <p className="font-mono text-[10px] uppercase tracking-widest leading-loose text-on-surface/80">
+              <span className="text-[#d2002a] font-bold">[!] ERROR_UNSUPPORTED_DEVICE</span><br/>
+              ACCESS TO THE RED QUEEN CORE AND CORPORATE CLEARANCE DASHBOARDS IS STRICTLY RESTRICTED TO SECURE DESKTOP WORKSTATIONS.<br/><br/>
+              MOBILE ACCESS IS TERMINATED TO PREVENT DATA BREACHES VIA UNSECURED CELLULAR NETWORKS.
+            </p>
+          </div>
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-[#d2002a] text-white font-headline font-bold uppercase tracking-widest text-xs hover:bg-[#ff0030] transition-colors"
+          >
+            <span className="material-symbols-outlined text-sm">home</span>
+            RETURN TO SURFACE
+          </Link>
+        </div>
+      )}
+
       {/* ─── LOGIN PHASE ─── */}
-      {(phase === 'login' || phase === 'scanning') && (
+      {!isMobile && (phase === 'login' || phase === 'scanning') && (
         <div className="relative z-10 w-full max-w-md px-8">
           <div className="flex flex-col items-center mb-10">
             <NextImage
@@ -198,7 +241,7 @@ export default function ClearancePage() {
       )}
 
       {/* ─── ACCESS DENIED PHASE ─── */}
-      {phase === 'denied' && (
+      {!isMobile && phase === 'denied' && (
         <div className="relative z-10 w-full max-w-lg px-8 text-center">
           <div className="border border-[#d2002a]/60 bg-[#d2002a]/5 p-12">
             <div className="flex justify-center mb-6">
@@ -262,7 +305,7 @@ export default function ClearancePage() {
       )}
 
       {/* ─── ACCESS GRANTED PHASE ─── */}
-      {phase === 'granted' && (
+      {!isMobile && phase === 'granted' && (
         <React.Fragment>
           <RotatingGLBBackground />
           <div className="relative z-10 w-full max-w-lg px-8 text-center">

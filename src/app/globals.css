@@ -64,6 +64,10 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   overflow-x: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 * {
@@ -85,7 +89,13 @@ body {
   }
   .asymmetric-grid {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  @media (min-width: 768px) {
+    .asymmetric-grid {
+      grid-template-columns: 1fr 2fr;
+    }
   }
 }
 

@@ -13,13 +13,13 @@ export default function ResearchLayout() {
             <main className="pt-20 min-h-screen relative">
                 {/* Global Top Nav injected via App Layout */}
                 {/* Hero Section */}
-                <section className="px-12 py-24 bg-surface-container-lowest relative overflow-hidden">
+                <section className="px-6 md:px-12 py-16 md:py-24 bg-surface-container-lowest relative overflow-hidden">
                     <div className="absolute inset-0 opacity-10 scanline pointer-events-none"></div>
                     <div className="max-w-6xl mx-auto">
                         <div className="grid grid-cols-12 gap-8">
                             <div className="col-span-12 lg:col-span-8">
                                 <span className="inline-block text-primary-container font-headline font-bold tracking-[0.5em] text-xs mb-6 uppercase">Institutional Archive | RD-69021</span>
-                                <h1 className="text-7xl md:text-8xl font-headline font-extrabold tracking-tighter text-on-surface leading-[0.9] mb-12">
+                                <h1 className="text-4xl md:text-8xl font-headline font-extrabold tracking-tighter text-on-surface leading-[0.9] mb-8 md:mb-12">
                                     THE <span className="text-primary-container">ADVANCEMENT</span> OF HUMAN EVOLUTION.
                                 </h1>
                                 <p className="text-xl font-body text-on-surface leading-relaxed max-w-2xl opacity-80 border-l-4 border-primary-container pl-8">
@@ -39,11 +39,11 @@ export default function ResearchLayout() {
                     </div>
                 </section>
                 {/* Research Grid (Bento Style) */}
-                <section className="px-12 py-24 bg-surface">
+                <section className="px-6 md:px-12 py-16 md:py-24 bg-surface">
                     <div className="max-w-7xl mx-auto">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
                             {/* Virology */}
-                            <div className="bg-surface-container-low p-10 flex flex-col justify-between group">
+                            <div className="bg-surface-container-low p-6 md:p-10 flex flex-col justify-between group">
                                 <div>
                                     <span className="material-symbols-outlined text-4xl text-primary-container mb-8" data-icon="biotech">biotech</span>
                                     <h3 className="text-3xl font-headline font-bold tracking-tight mb-4 uppercase">VIROLOGY<br />(PRIMARY STRAIN)</h3>
@@ -62,7 +62,7 @@ export default function ResearchLayout() {
                                 <a className="text-[10px] font-headline font-bold tracking-[0.3em] uppercase text-primary hover:text-white transition-colors" href="#">Review Data Logs -&gt;</a>
                             </div>
                             {/* B.O.W. */}
-                            <div className="bg-surface-container-high p-10 flex flex-col justify-between relative overflow-hidden">
+                            <div className="bg-surface-container-high p-6 md:p-10 flex flex-col justify-between relative overflow-hidden">
                                 <div className="absolute top-0 right-0 p-4">
                                     <span className="bg-error-container text-on-error-container text-[8px] font-bold px-2 py-1 uppercase tracking-tighter">Classified</span>
                                 </div>
@@ -84,7 +84,7 @@ export default function ResearchLayout() {
                                 <a className="text-[10px] font-headline font-bold tracking-[0.3em] uppercase text-primary-container hover:text-primary transition-colors" href="#">Tactical Assessment -&gt;</a>
                             </div>
                             {/* Pharmaceutical */}
-                            <div className="bg-surface-container-lowest p-10 flex flex-col justify-between border border-surface-container-high">
+                            <div className="bg-surface-container-lowest p-6 md:p-10 flex flex-col justify-between border border-surface-container-high">
                                 <div>
                                     <span className="material-symbols-outlined text-4xl text-primary-container mb-8" data-icon="medication">medication</span>
                                     <h3 className="text-3xl font-headline font-bold tracking-tight mb-4 uppercase">PHARMA<br />ENGINEERING</h3>
@@ -107,7 +107,7 @@ export default function ResearchLayout() {
                     </div>
                 </section>
                 {/* Facilities Map */}
-                <section className="px-12 py-24 bg-surface-container-lowest">
+                <section className="px-6 md:px-12 py-16 md:py-24 bg-surface-container-lowest pb-32">
                     <div className="max-w-7xl mx-auto">
                         <div className="flex flex-col md:flex-row gap-16">
                             <div className="w-full md:w-1/3">

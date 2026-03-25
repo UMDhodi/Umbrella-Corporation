@@ -1,12 +1,13 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import NextImage from 'next/image';
 
 export default function Navigation() {
   const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   if (pathname.startsWith('/clearance') || pathname === '/press/corporate-seals' || pathname === '/press/photo-assets' || pathname === '/press/boilerplate-text' || pathname === '/press/executive-portraits' || pathname === '/press/executive-training') return null;
 
@@ -19,19 +20,21 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="bg-[#131313] dark:bg-[#131313] docked full-width top-0 z-50 flex justify-between items-center w-full px-8 py-4 fixed">
-      <div className="flex items-center gap-3">
+    <nav className="bg-[#131313] dark:bg-[#131313] docked full-width top-0 z-[1000] flex justify-between items-center w-full px-6 md:px-8 py-4 fixed border-b border-white/5">
+      <div className="flex items-center gap-2 md:gap-3 shrink-0">
         <NextImage 
           src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Umbrella_Corporation_logo.svg" 
           alt="Umbrella Logo" 
           width={32} 
           height={32} 
           priority
-          className="opacity-90 h-8 w-auto" 
+          className="opacity-90 h-6 md:h-8 w-auto" 
         />
-        <div className="text-[28px] font-black tracking-tighter text-[#ffffff] dark:text-[#ffffff]" style={{ fontFamily: "var(--font-michroma)" }}>UMBRELLA CORP</div>
+        <div className="text-[20px] md:text-[28px] font-black tracking-tighter text-[#ffffff] whitespace-nowrap" style={{ fontFamily: "var(--font-michroma)" }}>UMBRELLA CORP</div>
       </div>
-      <div className="hidden md:flex gap-8 items-center">
+
+      {/* Desktop Links */}
+      <div className="hidden lg:flex gap-8 items-center">
         {navLinks.map((link) => {
           const isActive = pathname === link.path;
           return (
@@ -48,12 +51,53 @@ export default function Navigation() {
           );
         })}
       </div>
-      <Link
-        href="/clearance"
-        className="bg-primary-container text-on-primary-container px-6 py-2 font-headline font-bold uppercase tracking-widest text-xs hidden sm:block hover:bg-primary transition-colors"
-      >
-        CLEARANCE
-      </Link>
+
+      <div className="flex items-center gap-4">
+        <Link
+          href="/clearance"
+          className="bg-primary-container text-on-primary-container px-4 md:px-6 py-2 font-headline font-bold uppercase tracking-widest text-[10px] md:text-xs hidden lg:block hover:bg-primary transition-colors"
+        >
+          CLEARANCE
+        </Link>
+
+        {/* Mobile Toggle */}
+        <button 
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="lg:hidden text-[#e5e2e1] p-1"
+        >
+          <span className="material-symbols-outlined text-3xl">
+            {isMenuOpen ? 'close' : 'menu'}
+          </span>
+        </button>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 top-[72px] bg-[#131313] z-[999] flex flex-col p-8 lg:hidden animate-in fade-in slide-in-from-top-4 duration-300 overflow-y-auto">
+          <div className="flex flex-col gap-6">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.path;
+              return (
+                <Link
+                  key={link.name}
+                  href={link.path}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`font-['Space_Grotesk'] uppercase tracking-widest text-2xl font-bold ${isActive ? 'text-[#d2002a]' : 'text-[#e5e2e1]'}`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+            
+            <div className="h-[1px] bg-white/10 my-4"></div>
+            
+            <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#393939] leading-relaxed">
+              SECURE ACCESS PORTAL // DESKTOP ONLY<br/>
+              UMBRELLA CORP GLOBAL NETWORK
+            </p>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
