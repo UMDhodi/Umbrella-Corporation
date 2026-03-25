@@ -1,0 +1,96 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@theme inline {
+  --color-tertiary: #c6c6c7;
+  --color-on-primary-fixed: #410006;
+  --color-surface-container: #201f1f;
+  --color-surface-tint: #ffb3b0;
+  --color-secondary-container: #464747;
+  --color-surface-container-high: #2a2a2a;
+  --color-outline: #af8881;
+  --color-on-error-container: #ffdad6;
+  --color-primary-container: #d2002a;
+  --color-primary: #ffb3b0;
+  --color-on-secondary: #303031;
+  --color-surface: #131313;
+  --color-secondary-fixed: #e4e2e2;
+  --color-on-secondary-fixed: #1b1c1c;
+  --color-on-primary-fixed-variant: #93001a;
+  --color-tertiary-container: #676868;
+  --color-on-background: #e5e2e1;
+  --color-background: #131313;
+  --color-on-tertiary: #2f3131;
+  --color-surface-variant: #353534;
+  --color-primary-fixed-dim: #ffb3b0;
+  --color-on-secondary-fixed-variant: #464747;
+  --color-on-error: #690005;
+  --color-tertiary-fixed-dim: #c6c6c7;
+  --color-secondary-fixed-dim: #c7c6c6;
+  --color-outline-variant: #5e3f3a;
+  --color-on-surface: #e5e2e1;
+  --color-error: #ffb4ab;
+  --color-tertiary-fixed: #e2e2e2;
+  --color-inverse-on-surface: #313030;
+  --color-on-primary: #68000f;
+  --color-surface-dim: #131313;
+  --color-surface-container-highest: #353534;
+  --color-on-tertiary-fixed: #1a1c1c;
+  --color-on-secondary-container: #b6b5b5;
+  --color-primary-fixed: #ffdad8;
+  --color-surface-bright: #393939;
+  --color-secondary: #c7c6c6;
+  --color-on-primary-container: #ffe1e0;
+  --color-surface-container-lowest: #0e0e0e;
+  --color-on-tertiary-container: #e8e8e8;
+  --color-inverse-primary: #bf0025;
+  --color-error-container: #93000a;
+  --color-inverse-surface: #e5e2e1;
+  --color-surface-container-low: #1c1b1b;
+  --color-on-tertiary-fixed-variant: #454747;
+  --color-on-surface-variant: #e8bcb5;
+  
+  --font-headline: var(--font-space-grotesk);
+  --font-body: var(--font-inter);
+  --font-label: var(--font-inter);
+}
+
+:root {
+  --background: var(--color-background);
+  --foreground: var(--color-on-background);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+}
+
+* {
+  cursor: default !important;
+}
+
+/* Base custom utilities */
+@layer utilities {
+  .text-glow-red {
+    text-shadow: 0 0 10px rgba(255, 26, 26, 0.8), 0 0 20px rgba(255, 26, 26, 0.4);
+  }
+  .box-glow-red {
+    box-shadow: 0 0 15px rgba(255, 26, 26, 0.3);
+  }
+  .glass-overlay {
+    background: rgba(57, 57, 57, 0.15);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+  }
+  .asymmetric-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+/* Custom Selection */
+::selection {
+  background: rgba(255, 26, 26, 0.4);
+  color: #fff;
+}
