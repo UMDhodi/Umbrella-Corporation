@@ -30,8 +30,8 @@ const michroma = Michroma({
 });
 
 export const metadata: Metadata = {
-  title: "Umbrella Corporation | Subdermal Interface",
-  description: "Highest security clearance required.",
+  title: "Umbrella Corporation",
+  description: "The Umbrella Corporation was perceived as a titan of modern industry, a benevolent, high-tech pharmaceutical giant that preserved the health of the people. It was a household name, providing essential consumer products, medical supplies, and employment, operating with a largely positive public image, particularly in its hometown of Raccoon City.",
 };
 
 export default function RootLayout({
