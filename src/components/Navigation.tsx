@@ -25,12 +25,12 @@ export default function Navigation() {
         <NextImage 
           src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Umbrella_Corporation_logo.svg" 
           alt="Umbrella Logo" 
-          width={32} 
-          height={32} 
+          width={28} 
+          height={28} 
           priority
-          className="opacity-90 h-6 md:h-8 w-auto" 
+          className="opacity-90 h-6 md:h-7 w-auto" 
         />
-        <div className="text-[20px] md:text-[28px] font-black tracking-tighter text-[#ffffff] whitespace-nowrap" style={{ fontFamily: "var(--font-michroma)" }}>UMBRELLA CORP</div>
+        <div className="text-[16px] sm:text-[20px] md:text-[28px] font-black tracking-tighter text-[#ffffff] whitespace-nowrap overflow-visible leading-none" style={{ fontFamily: "var(--font-michroma)" }}>UMBRELLA CORP</div>
       </div>
 
       {/* Desktop Links */}
@@ -63,11 +63,18 @@ export default function Navigation() {
         {/* Mobile Toggle */}
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="lg:hidden text-[#e5e2e1] p-1"
+          className="lg:hidden text-[#e5e2e1] p-2 focus:outline-none"
+          aria-label="Toggle Menu"
         >
-          <span className="material-symbols-outlined text-3xl">
-            {isMenuOpen ? 'close' : 'menu'}
-          </span>
+          {isMenuOpen ? (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          ) : (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          )}
         </button>
       </div>
 

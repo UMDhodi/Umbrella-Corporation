@@ -15,11 +15,15 @@ export default function Footer() {
             © 1969 UMBRELLA PHARMACEUTICALS. ALL RIGHTS RESERVED. CLASSIFIED MATERIAL.
         </p>
       </div>
-      <div className="flex gap-4 md:gap-8 flex-wrap justify-center md:justify-end items-center">
-        <a className="font-['Inter'] text-[9px] md:text-[10px] uppercase tracking-widest text-[#393939] hover:text-[#e5e2e1] transition-all duration-150" href="#">Ethics</a>
-        <a className="font-['Inter'] text-[9px] md:text-[10px] uppercase tracking-widest text-[#393939] hover:text-[#e5e2e1] transition-all duration-150" href="#">Logistics</a>
-        <a className="font-['Inter'] text-[9px] md:text-[10px] uppercase tracking-widest text-[#393939] hover:text-[#e5e2e1] transition-all duration-150" href="#">Security</a>
-        <a className="font-['Inter'] text-[9px] md:text-[10px] uppercase tracking-widest text-[#393939] hover:text-[#e5e2e1] transition-all duration-150" href="#">Legal</a>
+      <div className="grid grid-cols-2 md:flex gap-x-8 gap-y-4 md:gap-8 w-full md:w-auto mt-4 md:mt-0">
+        <div className="flex flex-col gap-4">
+          <a className="font-['Inter'] text-[9px] md:text-[10px] uppercase tracking-widest text-[#393939] hover:text-[#e5e2e1] transition-all duration-150" href="#">Ethics Committee</a>
+          <a className="font-['Inter'] text-[9px] md:text-[10px] uppercase tracking-widest text-[#393939] hover:text-[#e5e2e1] transition-all duration-150" href="#">Security Protocols</a>
+        </div>
+        <div className="flex flex-col gap-4">
+          <a className="font-['Inter'] text-[9px] md:text-[10px] uppercase tracking-widest text-[#393939] hover:text-[#e5e2e1] transition-all duration-150" href="#">Global Logistics</a>
+          <a className="font-['Inter'] text-[9px] md:text-[10px] uppercase tracking-widest text-[#393939] hover:text-[#e5e2e1] transition-all duration-150" href="#">Legal Disclaimer</a>
+        </div>
       </div>
     </footer>
   );
